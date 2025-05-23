@@ -8,7 +8,6 @@ function VideoPage() {
   const [video, setVideo] = useState(null);
 
   const videoList = [
-    { id: '1', title: 'Introduction to React', url: '/video1.mp4', duration: 300 },
     { id: '2', title: 'Advanced JavaScript', url: '/video2.mp4', duration: 400 },
     { id: '3', title: 'Node.js Basics', url: '/video3.mp4', duration: 350 },
     { id: '4', title: 'MongoDB Essentials', url: '/video4.mp4', duration: 320 },
@@ -18,10 +17,17 @@ function VideoPage() {
     const fetchProgress = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get(`https://stream-backend-w52k.onrender.com/api/progress/${videoId}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await axios.get(
+          `https://stream-backend-w52k.onrender.com/api/progress/${videoId}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         const selectedVideo = videoList.find((v) => v.id === videoId);
+        if (!selectedVideo) {
+          setVideo(null);
+          return;
+        }
         setVideo({
           ...selectedVideo,
           progress: res.data.progress || 0,
@@ -31,13 +37,18 @@ function VideoPage() {
       } catch (err) {
         console.error(err);
         const selectedVideo = videoList.find((v) => v.id === videoId);
+        if (!selectedVideo) {
+          setVideo(null);
+          return;
+        }
         setVideo({ ...selectedVideo, progress: 0, intervals: [], lastPosition: 0 });
       }
     };
+
     fetchProgress();
   }, [videoId]);
 
-  if (!video) return <div className="text-center p-6 text-gray-600">Loading video...</div>;
+  if (!video) return <div className="text-center p-6 text-gray-600">Video not found or loading...</div>;
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
