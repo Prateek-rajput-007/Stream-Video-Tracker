@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
@@ -30,6 +29,7 @@ function VideoPage() {
           lastPosition: res.data.lastPosition || 0,
         });
       } catch (err) {
+        console.error(err);
         const selectedVideo = videoList.find((v) => v.id === videoId);
         setVideo({ ...selectedVideo, progress: 0, intervals: [], lastPosition: 0 });
       }
