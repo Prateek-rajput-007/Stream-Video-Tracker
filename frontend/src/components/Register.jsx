@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom'; 
 
 function Register() {
   const [email, setEmail] = useState('');
@@ -43,9 +44,12 @@ function Register() {
             required
           />
         </div>
-        <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">
-          Register
-        </button>
+       <Link
+  to="/register"
+  className="inline-block bg-gray-200 text-blue-700 px-4 py-2 rounded-full font-semibold hover:bg-gray-300"
+>
+  Register
+</Link>
       </form>
     </div>
   );
