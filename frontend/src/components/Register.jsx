@@ -11,7 +11,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/auth/register', { email, password });
+      await axios.post('https://stream-backend-w52k.onrender.com/api/auth/register', { email, password });
       navigate('/login');
     } catch (err) {
       setError('Registration failed');

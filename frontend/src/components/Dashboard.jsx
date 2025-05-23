@@ -28,7 +28,7 @@ function Dashboard() {
     const fetchProgress = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:5000/api/progress', {
+        const res = await axios.get('https://stream-backend-w52k.onrender.com/api/progress', {
           headers: { Authorization: `Bearer ${token}` },
         });
 
