@@ -72,7 +72,7 @@ function VideoPlayer({ videoId, videoUrl, duration: initialDuration, initialProg
         try {
           const token = localStorage.getItem('token');
           await axios.post(
-            'http://localhost:5000/api/progress',
+            'https://stream-backend-w52k.onrender.com/api/progress',
             { videoId, intervals: newIntervals, progress: newProgress, lastPosition: currentTime },
             { headers: { Authorization: `Bearer ${token}` } }
           );
