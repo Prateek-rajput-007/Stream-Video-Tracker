@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -8,7 +7,6 @@ function Analytics() {
   const [videos, setVideos] = useState([]);
 
   const videoList = [
-    { id: '1', title: 'Introduction to React', url: '/video1.mp4' },
     { id: '2', title: 'Advanced JavaScript', url: '/video2.mp4' },
     { id: '3', title: 'Node.js Basics', url: '/video3.mp4' },
     { id: '4', title: 'MongoDB Essentials', url: '/video4.mp4' },
@@ -70,7 +68,6 @@ function Analytics() {
     fetchProgress();
   }, []);
 
-  // Calculate overall completion percentage
   const overallCompletion =
     videos.length > 0
       ? Math.round(
@@ -80,11 +77,8 @@ function Analytics() {
 
   return (
     <div className="max-w-5xl mx-auto p-6">
-      <h2 className="text-3xl font-extrabold text-center text-gray-800 mb-8">
-         Analytics
-      </h2>
+      <h2 className="text-3xl font-extrabold text-center text-gray-800 mb-8">Analytics</h2>
 
-      {/* Overall Completion Progress Bar */}
       <div className="mb-10">
         <div className="flex items-center justify-between mb-2">
           <span className="text-lg font-semibold text-gray-700">Overall Completion</span>
