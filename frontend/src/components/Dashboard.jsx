@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -8,7 +7,6 @@ function Dashboard() {
   const [videos, setVideos] = useState([]);
 
   const videoList = [
-    { id: '1', title: 'Introduction to React', url: '/video1.mp4' },
     { id: '2', title: 'Advanced JavaScript', url: '/video2.mp4' },
     { id: '3', title: 'Node.js Basics', url: '/video3.mp4' },
     { id: '4', title: 'MongoDB Essentials', url: '/video4.mp4' },
@@ -69,9 +67,7 @@ function Dashboard() {
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-8">
-      <h2 className="text-4xl font-bold mb-8 text-center text-gray-800">
-        Your Dashboard
-      </h2>
+      <h2 className="text-4xl font-bold mb-8 text-center text-gray-800">Your Dashboard</h2>
 
       <div className="flex justify-end mb-6">
         <Link
